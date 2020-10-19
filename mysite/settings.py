@@ -127,7 +127,7 @@ STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find statif files.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static')    
+    os.path.join(PROJECT_ROOT, 'static'),    
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
