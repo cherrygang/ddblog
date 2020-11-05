@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'crispy_forms',
-    'django_summernote'
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },
@@ -145,9 +146,10 @@ STATICFILES_DIRS = (
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #settings needed for summernote
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 
 #settings for heroku
 db_from_env = dj_database_url.config(conn_max_age=500)
@@ -159,18 +161,18 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 django_heroku.settings(locals())
 
 #Logging for heroku error
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
-        },
-    },
-}
+#    LOGGING = {
+#        'version': 1,
+#        'disable_existing_loggers': False,
+#        'handlers': {
+#            'console': {
+#                'class': 'logging.StreamHandler',
+#            },
+#        },
+#        'loggers': {
+#            'django': {
+#                'handlers': ['console'],
+#                 'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+#            },
+#        },
+#    }
